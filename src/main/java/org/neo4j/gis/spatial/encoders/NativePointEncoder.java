@@ -21,7 +21,6 @@ package org.neo4j.gis.spatial.encoders;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
 import org.neo4j.gis.spatial.AbstractGeometryEncoder;
 import org.neo4j.gis.spatial.SpatialDatabaseService;
@@ -35,20 +34,14 @@ import org.neo4j.graphdb.Transaction;
  */
 public class NativePointEncoder extends AbstractGeometryEncoder implements Configurable {
     private static final String DEFAULT_GEOM = "location";
-    private static GeometryFactory geometryFactory;
     private String locationProperty = DEFAULT_GEOM;
     private Neo4jCRS crs = Neo4jCRS.findCRS("WGS-84");
-
-    protected GeometryFactory getGeometryFactory() {
-        if (geometryFactory == null) geometryFactory = new GeometryFactory();
-        return geometryFactory;
-    }
 
     @Override
     protected void encodeGeometryShape(Transaction tx, Geometry geometry, Entity container) {
         int gtype = SpatialDatabaseService.convertJtsClassToGeometryType(geometry.getClass());
         if (gtype == GTYPE_POINT) {
-            container.setProperty("gtype", gtype);
+            container.setProperty(PROP_TYPE, gtype);
             Neo4jPoint neo4jPoint = new Neo4jPoint((Point) geometry, crs);
             container.setProperty(locationProperty, neo4jPoint);
         } else {

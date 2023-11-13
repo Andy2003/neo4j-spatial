@@ -21,7 +21,6 @@ package org.neo4j.gis.spatial.encoders;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryFactory;
 import org.neo4j.gis.spatial.AbstractGeometryEncoder;
 import org.neo4j.gis.spatial.SpatialDatabaseService;
 import org.neo4j.graphdb.Entity;
@@ -33,20 +32,14 @@ import org.neo4j.graphdb.Transaction;
 public class SimplePointEncoder extends AbstractGeometryEncoder implements Configurable {
     public static final String DEFAULT_X = "longitude";
     public static final String DEFAULT_Y = "latitude";
-    protected GeometryFactory geometryFactory;
     protected String xProperty = DEFAULT_X;
     protected String yProperty = DEFAULT_Y;
-
-    protected GeometryFactory getGeometryFactory() {
-        if (geometryFactory == null) geometryFactory = new GeometryFactory();
-        return geometryFactory;
-    }
 
     @Override
     protected void encodeGeometryShape(Transaction tx, Geometry geometry, Entity container) {
         container.setProperty(
-                "gtype",
-                SpatialDatabaseService.convertJtsClassToGeometryType(geometry.getClass()));
+            PROP_TYPE,
+            SpatialDatabaseService.convertJtsClassToGeometryType(geometry.getClass()));
         Coordinate[] coords = geometry.getCoordinates();
         container.setProperty(xProperty, coords[0].x);
         container.setProperty(yProperty, coords[0].y);

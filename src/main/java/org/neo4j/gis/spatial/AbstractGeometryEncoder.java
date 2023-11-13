@@ -20,6 +20,7 @@
 package org.neo4j.gis.spatial;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.locationtech.jts.geom.GeometryFactory;
 import org.neo4j.gis.spatial.rtree.Envelope;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Entity;
@@ -30,6 +31,13 @@ import org.neo4j.graphdb.Transaction;
 public abstract class AbstractGeometryEncoder implements GeometryEncoder, Constants {
 
     protected String bboxProperty = PROP_BBOX;
+
+    private GeometryFactory geometryFactory;
+
+    protected GeometryFactory getGeometryFactory() {
+        if (geometryFactory == null) geometryFactory = new GeometryFactory();
+        return geometryFactory;
+    }
 
     // Public methods
 
