@@ -1461,4 +1461,9 @@ public class RTreeIndex implements SpatialIndexWriter, Configurable {
             return Double.compare(o1.envelope.getArea(), o2.envelope.getArea());
         }
     }
+
+    @Override
+    public void close(Transaction tx) {
+        saveCount(tx);
+    }
 }

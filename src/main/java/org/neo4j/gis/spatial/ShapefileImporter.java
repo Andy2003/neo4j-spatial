@@ -225,6 +225,10 @@ public class ShapefileImporter implements Constants {
         } finally {
             shpReader.close();
         }
+        try (Transaction tx = database.beginTx()) {
+            layer.close(tx);
+            tx.commit();
+        }
 
         long stopTime = System.currentTimeMillis();
         log("info | elapsed time in seconds: " + (1.0 * (stopTime - startTime) / 1000));

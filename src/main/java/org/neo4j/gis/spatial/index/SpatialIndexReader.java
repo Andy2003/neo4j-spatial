@@ -48,4 +48,6 @@ public interface SpatialIndexReader {
     void addMonitor(TreeMonitor monitor);
 
     void configure(Map<String, Object> config);
+
+    default void close(Transaction tx) {}
 }
