@@ -679,14 +679,10 @@
 
     <distributionManagement>
         <repository>
-            <id>repo</id>
-            <url>https://raw.github.com/Any2003/m2/master/releases</url>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Any2003/neo4j-spatial</url>
         </repository>
-        <snapshotRepository>
-            <id>snapshot-repo</id>
-            <url>https://raw.github.com/Any2003/m2/master/snapshots</url>
-        </snapshotRepository>
     </distributionManagement>
-
 </project>
 
