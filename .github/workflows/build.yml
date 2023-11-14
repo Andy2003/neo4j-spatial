@@ -10,7 +10,9 @@ jobs:
   release:
 
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -35,14 +37,20 @@ jobs:
           distribution: adopt
           java-version: 17
 
-      - name: Build Jar
-        run: mvn --no-transfer-progress -Dmaven.test.skip=true clean package
+#      - name: Build Jar
+#        run: mvn --no-transfer-progress -Dmaven.test.skip=true clean package
 
-      - name: Upload Jar
-        uses: meeDamian/github-release@2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.extract_version.outputs.version }}
-          name: neo4j-spatial ${{ steps.extract_version.outputs.version }}
-          files: target/neo4j-spatial-${{ steps.extract_version.outputs.version }}-server-plugin.jar
+      - name: Publish package
+        run: mvn --no-transfer-progress -Dmaven.test.skip=true --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+#      - name: Upload Jar
+#        uses: meeDamian/github-release@2.0
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          tag: v${{ steps.extract_version.outputs.version }}
+#          name: neo4j-spatial ${{ steps.extract_version.outputs.version }}
+#          gzip: false
+#          files: target/*.jar
+#

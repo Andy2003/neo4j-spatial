@@ -454,7 +454,7 @@
         </repository>
         <repository>
             <id>neo4j-contrib-releases</id>
-            <url>https://raw.github.com/neo4j-contrib/m2/master/releases</url>
+            <url>https://raw.github.com/Andy2003/m2/master/releases</url>
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
@@ -680,11 +680,11 @@
     <distributionManagement>
         <repository>
             <id>repo</id>
-            <url>https://raw.github.com/neo4j-contrib/m2/master/releases</url>
+            <url>https://raw.github.com/Any2003/m2/master/releases</url>
         </repository>
         <snapshotRepository>
             <id>snapshot-repo</id>
-            <url>https://raw.github.com/neo4j-contrib/m2/master/snapshots</url>
+            <url>https://raw.github.com/Any2003/m2/master/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 

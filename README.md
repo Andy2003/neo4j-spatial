@@ -453,23 +453,13 @@ Add the following repositories and dependency to your project's pom.xml:
 ~~~xml
     <repositories>
         <repository>
-            <id>neo4j-contrib-releases</id>
-            <url>https://raw.github.com/neo4j-contrib/m2/master/releases</url>
+            <id>Any2003-releases</id>
+            <url>https://raw.github.com/Any2003/m2/master/releases</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
             <snapshots>
                 <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>neo4j-contrib-snapshots</id>
-            <url>https://raw.github.com/neo4j-contrib/m2/master/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
