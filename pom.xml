@@ -19,7 +19,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.andy2003</groupId>
+    <groupId>io.github.andy2003</groupId>
     <artifactId>neo4j-spatial</artifactId>
     <version>0.29.0-neo4j-5.13.0</version>
 
@@ -678,5 +678,14 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/andy2003/neo4j-spatial</url>
+        </repository>
+    </distributionManagement>
+
 </project>
 
