@@ -28,27 +28,20 @@ jobs:
       - name: Check Existing Release
         id: check_release
         run: |
-          existing_release=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/releases/tags/v${{ steps.extract_version.outputs.version }})
+          STATUSCODE=$(curl -s -o /dev/null -I -w "%{http_code}" https://api.github.com/repos/${{ github.repository }}/releases/tags/v${{ steps.extract_version.outputs.version }})
           
-          if [[ -n "$existing_release" ]]; then
-          echo "Release with version v${{ steps.extract_version.outputs.version }} already exists. Exiting..."
-          exit 1
+          if test $STATUSCODE -n 200; then
+            echo "Release with version v${{ steps.extract_version.outputs.version }} already exists. Exiting..."
+            exit 1
           fi
 
       - name: Build Jar
         run: mvn clean package
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: v${{ steps.extract_version.outputs.version }}
-          release_name: Release v${{ steps.extract_version.outputs.version }}
-
       - name: Upload Jar
-        uses: actions/upload-artifact@v3
+        uses: meeDamian/github-release@2.0
         with:
-          name: neo4j-spatial-${{ steps.extract_version.outputs.version }}
-          path: target/*.jar
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.extract_version.outputs.version }}
+          files: target/*.jar
 
