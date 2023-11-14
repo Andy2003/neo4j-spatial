@@ -15,6 +15,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Extract Version
+        id: extract_version
+        run: echo "::set-output name=version::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
+
       - name: Check Existing Release
         id: check_release
         run: |
@@ -24,10 +28,6 @@ jobs:
             echo "Release with version v${{ steps.extract_version.outputs.version }} already exists. Exiting..."
             exit 1
           fi
-
-      - name: Extract Version
-        id: extract_version
-        run: echo "::set-output name=version::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
