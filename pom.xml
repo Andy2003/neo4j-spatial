@@ -18,17 +18,19 @@
     </properties>
 
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.andy2003</groupId>
     <artifactId>neo4j-spatial</artifactId>
-    <groupId>io.github.andy2003</groupId>
     <version>0.29.0-neo4j-5.13.0</version>
+
     <name>Neo4j - Spatial Components</name>
     <description>Spatial utilities and components for Neo4j</description>
     <inceptionYear>2010</inceptionYear>
     <packaging>jar</packaging>
     <scm>
-        <url>http://github.com/neo4j/spatial/</url>
-        <connection>scm:git:git://github.com/neo4j/spatial.git</connection>
-        <developerConnection>scm:git:git@github.com:neo4j/spatial.git</developerConnection>
+        <url>http://github.com/Andy2003/neo4j-spatial/</url>
+        <connection>scm:git:git://github.com/Andy2003/neo4j-spatial.git</connection>
+        <developerConnection>scm:git:git@github.com:Andy2003/neo4j-spatial.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <build>
@@ -676,13 +678,5 @@
             </plugin>
         </plugins>
     </reporting>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/Any2003/neo4j-spatial</url>
-        </repository>
-    </distributionManagement>
 </project>
 
