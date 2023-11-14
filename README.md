@@ -477,7 +477,7 @@ Add the following repositories and dependency to your project's pom.xml:
     <dependency>
         <groupId>org.neo4j</groupId>
         <artifactId>neo4j-spatial</artifactId>
-        <version>0.28.1-neo4j-4.4.3</version>
+        <version>0.29.0-neo4j-5.13.0</version>
     </dependency>
 ~~~
 
