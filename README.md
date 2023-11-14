@@ -453,8 +453,8 @@ Add the following repositories and dependency to your project's pom.xml:
 ~~~xml
     <repositories>
         <repository>
-            <id>Any2003-releases</id>
-            <url>https://raw.github.com/Any2003/m2/master/releases</url>
+            <id>andy2003-releases</id>
+            <url>https://maven.pkg.github.com/andy2003/neo4j-spatial</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -465,7 +465,7 @@ Add the following repositories and dependency to your project's pom.xml:
     </repositories>
     [...]
     <dependency>
-        <groupId>org.neo4j</groupId>
+        <groupId>com.github.andy2003</groupId>
         <artifactId>neo4j-spatial</artifactId>
         <version>0.29.0-neo4j-5.13.0</version>
     </dependency>

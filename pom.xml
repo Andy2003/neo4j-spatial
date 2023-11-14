@@ -19,7 +19,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.andy2003</groupId>
+    <groupId>com.github.andy2003</groupId>
     <artifactId>neo4j-spatial</artifactId>
     <version>0.29.0-neo4j-5.13.0</version>
 
