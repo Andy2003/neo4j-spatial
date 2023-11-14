@@ -19,7 +19,6 @@
  */
 package org.neo4j.gis.spatial.procedures;
 
-import org.geotools.geojson.geom.GeometryJSON;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
 import org.locationtech.jts.geom.*;
 import org.locationtech.jts.io.ParseException;
